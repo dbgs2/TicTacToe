@@ -1,0 +1,15 @@
+swap player
+
+is occupied
+
+moves left
+
+game status
+
+AI move
+
+public static void playerMove(char player, int move) {}
+
+public static String printBoard() {}
+
+public static char[] setBoard() {}
