@@ -1,5 +1,3 @@
-swap player
-
 is occupied
 
 moves left
@@ -7,6 +5,8 @@ moves left
 game status
 
 AI move
+
+public static char swapPlayer() {}
 
 public static void playerMove(char player, int move) {}
 
