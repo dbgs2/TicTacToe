@@ -73,5 +73,41 @@ public class BusinessTest {
 		Business.playerMove('O', 1);
 		assertEquals(7 , Business.movesLeft());
 	}
+	
+	@Test
+	public void testGameStatus() {
+		
+		// Game status test
+		business = new Business();
+		
+		// None wins, still moves left
+		assertEquals('N' , Business.gameStatus());
+		
+		// X wins
+		Business.playerMove('X', 0);
+		Business.playerMove('X', 1);
+		Business.playerMove('X', 2);
+		assertEquals('X' , Business.gameStatus());
+		
+		// O wins
+		business = new Business();
+		Business.playerMove('O', 0);
+		Business.playerMove('O', 1);
+		Business.playerMove('O', 2);
+		assertEquals('O' , Business.gameStatus());
+		
+		// Draw
+		business = new Business();
+		Business.playerMove('X', 0);
+		Business.playerMove('O', 1);
+		Business.playerMove('X', 2);
+		Business.playerMove('O', 3);
+		Business.playerMove('X', 4);
+		Business.playerMove('X', 5);
+		Business.playerMove('O', 6);
+		Business.playerMove('X', 7);
+		Business.playerMove('O', 8);
+		assertEquals('D' , Business.gameStatus());
+	}
 
 }
