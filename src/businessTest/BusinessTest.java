@@ -44,5 +44,13 @@ public class BusinessTest {
 		assertArrayEquals(emptyBoard, Business.board);
 		
 	}
+	
+	@Test
+	public void testSwapPlayer() {
+		
+		// Swap player test
+		assertEquals('X', Business.swapPlayer());
+		assertEquals('O', Business.swapPlayer());
+	}
 
 }

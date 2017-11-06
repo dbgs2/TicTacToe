@@ -5,12 +5,16 @@ import java.util.Arrays;
 public class Business {
 
 	public static char[] board;
+	public static char currPlayer;
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
+	public Business() {
+		//board = setBoard();
+		//currPlayer = 'X';
+	}
+	
 	// New board set ' ' = empty square on board.
 	public static char[] setBoard() {
 		board = new char[] {' ',' ',' ',' ',' ',' ',' ',' ',' '};		
@@ -26,7 +30,12 @@ public class Business {
 	// Player makes a move to board
 	public static void playerMove(char player, int move) {	
 		if(move < 0 || move > 9) return;
-		if(board[move] == ' ') board[move] = player;
-		
+		if(board[move] == ' ') board[move] = player;	
+	}
+
+	public static char swapPlayer() {	
+		if(currPlayer == 'X') currPlayer = 'O'; 
+		else currPlayer = 'X';	
+		return currPlayer;
 	}
 }
