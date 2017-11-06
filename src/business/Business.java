@@ -6,13 +6,15 @@ public class Business {
 
 	public static char[] board;
 	public static char currPlayer;
+	public static int movesLeft;
 	
 	public static void main(String[] args) {
 	}
 
 	public Business() {
-		//board = setBoard();
-		//currPlayer = 'X';
+		board = setBoard();
+		currPlayer = 'X';
+		movesLeft = 9;
 	}
 	
 	// New board set ' ' = empty square on board.
@@ -30,12 +32,19 @@ public class Business {
 	// Player makes a move to board
 	public static void playerMove(char player, int move) {	
 		if(move < 0 || move > 9) return;
-		if(board[move] == ' ') board[move] = player;	
+		if(board[move] == ' ') {
+			board[move] = player;
+			movesLeft--;
+		}	
 	}
 
 	public static char swapPlayer() {	
 		if(currPlayer == 'X') currPlayer = 'O'; 
 		else currPlayer = 'X';	
 		return currPlayer;
+	}
+
+	public static int movesLeft() {
+		return movesLeft;
 	}
 }
