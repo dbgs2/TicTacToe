@@ -47,4 +47,26 @@ public class Business {
 	public static int movesLeft() {
 		return movesLeft;
 	}
+
+	public static char gameStatus() {
+		// X winning conditions
+		if((board[0] == 'X' && board[1] == 'X' && board[2] == 'X') ||
+		   (board[3] == 'X' && board[4] == 'X' && board[5] == 'X') ||
+		   (board[6] == 'X' && board[7] == 'X' && board[8] == 'X') ||
+		   (board[0] == 'X' && board[4] == 'X' && board[8] == 'X') ||
+		   (board[2] == 'X' && board[4] == 'X' && board[6] == 'X')) return 'X';
+		
+		// O winning conditions
+		if((board[0] == 'O' && board[1] == 'O' && board[2] == 'O') ||
+		   (board[3] == 'O' && board[4] == 'O' && board[5] == 'O') ||
+		   (board[6] == 'O' && board[7] == 'O' && board[8] == 'O') ||
+		   (board[0] == 'O' && board[4] == 'O' && board[8] == 'O') ||
+		   (board[2] == 'O' && board[4] == 'O' && board[6] == 'O')) return 'O';
+		
+		// If no moves are left, its draw
+		if(movesLeft < 1) return 'D';
+		
+		// still moves left and X and O have not won yet
+		return 'N';
+	}
 }

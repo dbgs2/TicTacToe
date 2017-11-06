@@ -1,10 +1,12 @@
 is occupied
 
-moves left
+
 
 game status
 
 AI move
+
+public static int movesLeft() {}
 
 public static char swapPlayer() {}
 
