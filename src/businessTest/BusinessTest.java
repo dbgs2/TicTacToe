@@ -109,5 +109,33 @@ public class BusinessTest {
 		Business.playerMove('O', 8);
 		assertEquals('D' , Business.gameStatus());
 	}
+	
+	@Test public void testIsOccupied() {
+		
+		// Is occupied test
+		business = new Business();
+		Business.playerMove('X', 0);
+		assertEquals(true , Business.isOccupied(0));
+		assertEquals(false , Business.isOccupied(1));
+		
+		// what to put in the first equals true/false/llegalArgumentException.class?
+		try{
+			assertEquals(true , Business.isOccupied(10));
+	    } catch(IllegalArgumentException e){
+	        //ignore, this exception is expected.
+	    	//System.out.println(e.getMessage()); 
+	    }
+		
+		try{
+			assertEquals(IllegalArgumentException.class , Business.isOccupied(-1));
+	    } catch(IllegalArgumentException e){
+	        //ignore, this exception is expected.
+	    	//System.out.println(e.getMessage()); 
+	    }
+		
+		
+	}
+	
+	
 
 }
