@@ -132,8 +132,23 @@ public class BusinessTest {
 	        //ignore, this exception is expected.
 	    	//System.out.println(e.getMessage()); 
 	    }
+	}
+	
+	@Test public void testAIMoveRand() {
 		
+		// AI move test
+		business = new Business();
+		assertEquals(9 , Business.movesLeft);
 		
+		// Player moves as X
+		Business.playerMove('X', 4);
+		Business.swapPlayer();
+		assertEquals(8 , Business.movesLeft);
+		
+		// AI as O
+		Business.aIMoveRand();
+		assertEquals(7 , Business.movesLeft);
+		//System.out.println(Business.printBoard()); 
 	}
 	
 	
