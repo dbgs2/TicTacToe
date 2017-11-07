@@ -69,4 +69,10 @@ public class Business {
 		// still moves left and X and O have not won yet
 		return 'N';
 	}
+
+	public static boolean isOccupied(int N) {
+		if(N < 0 || N > 8) throw new IllegalArgumentException("Your number is out of bounds");
+		if(board[N] == ' ') return false;
+		return true;
+	}
 }

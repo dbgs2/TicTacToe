@@ -1,10 +1,9 @@
-is occupied
-
-
-
-game status
 
 AI move
+
+public static boolean isOccupied(int N) {}
+
+public static char gameStatus() {}
 
 public static int movesLeft() {}
 
