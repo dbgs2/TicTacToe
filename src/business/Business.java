@@ -1,6 +1,7 @@
 package business;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Business {
 
@@ -25,7 +26,6 @@ public class Business {
 
 	// Print current board out
 	public static String printBoard() {
-		setBoard();
 		return Arrays.toString(board);
 	}
 
@@ -74,5 +74,25 @@ public class Business {
 		if(N < 0 || N > 8) throw new IllegalArgumentException("Your number is out of bounds");
 		if(board[N] == ' ') return false;
 		return true;
+	}
+
+	public static void aIMoveRand() {
+		
+		if(gameStatus() == 'N')
+		{
+			Random rand = new Random();
+			int value = 4;
+			while(isOccupied(value)) 
+				value = rand.nextInt(9);
+			
+			playerMove(currPlayer, value);
+		}
+		// could just be nothing ??
+		else if(gameStatus() == 'X' || gameStatus() == 'O' || gameStatus() == 'D')
+		{
+			// no moves left or draw or X / O wins
+		}
+		
+		
 	}
 }
