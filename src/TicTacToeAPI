@@ -1,6 +1,8 @@
 
 AI move
 
+public static void aIMoveRand() {}
+
 public static boolean isOccupied(int N) {}
 
 public static char gameStatus() {}

@@ -5,9 +5,9 @@ import java.util.Random;
 
 public class Business {
 
-	public static char[] board;
-	public static char currPlayer;
-	public static int movesLeft;
+	public char[] board;
+	public char currPlayer;
+	public int movesLeft;
 	
 	public static void main(String[] args) {
 	}
@@ -19,36 +19,37 @@ public class Business {
 	}
 	
 	// New board set ' ' = empty square on board.
-	public static char[] setBoard() {
+	public char[] setBoard() {
 		board = new char[] {' ',' ',' ',' ',' ',' ',' ',' ',' '};		
 		return  board;	
 	}
 
 	// Print current board out
-	public static String printBoard() {
+	public String printBoard() {
 		return Arrays.toString(board);
 	}
 
 	// Player makes a move to board
-	public static void playerMove(char player, int move) {	
-		if(move < 0 || move > 9) return;
+	public boolean playerMove(char player, int move) {	
+		if(move < 0 || move > 9 || isOccupied(move)) return false;
 		if(board[move] == ' ') {
 			board[move] = player;
 			movesLeft--;
-		}	
+		}
+		return true;	
 	}
 
-	public static char swapPlayer() {	
+	public char swapPlayer() {	
 		if(currPlayer == 'X') currPlayer = 'O'; 
 		else currPlayer = 'X';	
 		return currPlayer;
 	}
 
-	public static int movesLeft() {
+	public int movesLeft() {
 		return movesLeft;
 	}
 
-	public static char gameStatus() {
+	public char gameStatus() {
 		// X winning conditions
 		if((board[0] == 'X' && board[1] == 'X' && board[2] == 'X') ||
 		   (board[3] == 'X' && board[4] == 'X' && board[5] == 'X') ||
@@ -70,13 +71,13 @@ public class Business {
 		return 'N';
 	}
 
-	public static boolean isOccupied(int N) {
+	public boolean isOccupied(int N) {
 		if(N < 0 || N > 8) throw new IllegalArgumentException("Your number is out of bounds");
 		if(board[N] == ' ') return false;
 		return true;
 	}
 
-	public static void aIMoveRand() {
+	public void aIMoveRand() {
 		
 		if(gameStatus() == 'N')
 		{
