@@ -8,7 +8,7 @@ import business.Business;
 
 public class BusinessTest {
 
-	Business business;
+	static Business business;
 	
 	@Test
 	public void testSetBoard() {
@@ -17,7 +17,7 @@ public class BusinessTest {
 		business = new Business();
 		char[] emptyBoard;
 		emptyBoard = new char[] {' ',' ',' ',' ',' ',' ',' ',' ',' '};
-		assertArrayEquals(emptyBoard, Business.setBoard());
+		assertArrayEquals(emptyBoard, business.setBoard());
 	}
 	
 	@Test
@@ -27,7 +27,7 @@ public class BusinessTest {
 		business = new Business();
 		String emptyBoardPrinted;
 		emptyBoardPrinted = "[ ,  ,  ,  ,  ,  ,  ,  ,  ]";
-		assertEquals(emptyBoardPrinted , Business.printBoard());
+		assertEquals(emptyBoardPrinted , business.printBoard());
 	}
 	
 	@Test
@@ -37,16 +37,16 @@ public class BusinessTest {
 		business = new Business();
 		char[] emptyBoard;
 		emptyBoard = new char[] {'X',' ',' ',' ',' ',' ',' ',' ',' '};
-		Business.playerMove('X', 0);
-		Business.playerMove('O', 0);
-		Business.playerMove('O', -1);
-		Business.playerMove('O', 10);
-		assertArrayEquals(emptyBoard, Business.board);
+		business.playerMove('X', 0);
+		business.playerMove('O', 0);
+		business.playerMove('O', -1);
+		business.playerMove('O', 10);
+		assertArrayEquals(emptyBoard, business.board);
 		
 		emptyBoard = new char[] {'X','O',' ',' ',' ',' ',' ',' ',' '};
-		Business.playerMove('X', 0);
-		Business.playerMove('O', 1);
-		assertArrayEquals(emptyBoard, Business.board);
+		business.playerMove('X', 0);
+		business.playerMove('O', 1);
+		assertArrayEquals(emptyBoard, business.board);
 		
 	}
 	
@@ -55,9 +55,9 @@ public class BusinessTest {
 		
 		// Swap player test
 		business = new Business();
-		assertEquals('O', Business.swapPlayer());
-		assertEquals('X', Business.swapPlayer());
-		assertEquals('O', Business.swapPlayer());
+		assertEquals('O', business.swapPlayer());
+		assertEquals('X', business.swapPlayer());
+		assertEquals('O', business.swapPlayer());
 	}
 	
 	@Test
@@ -65,13 +65,13 @@ public class BusinessTest {
 		
 		// Moves left test
 		business = new Business();
-		assertEquals(9 , Business.movesLeft());	
-		Business.playerMove('X', 0);
-		assertEquals(8 , Business.movesLeft());	
-		Business.playerMove('X', 0);
-		assertEquals(8 , Business.movesLeft());
-		Business.playerMove('O', 1);
-		assertEquals(7 , Business.movesLeft());
+		assertEquals(9 , business.movesLeft());	
+		business.playerMove('X', 0);
+		assertEquals(8 , business.movesLeft());	
+		business.playerMove('X', 0);
+		assertEquals(8 , business.movesLeft());
+		business.playerMove('O', 1);
+		assertEquals(7 , business.movesLeft());
 	}
 	
 	@Test
@@ -81,53 +81,53 @@ public class BusinessTest {
 		business = new Business();
 		
 		// None wins, still moves left
-		assertEquals('N' , Business.gameStatus());
+		assertEquals('N' , business.gameStatus());
 		
 		// X wins
-		Business.playerMove('X', 0);
-		Business.playerMove('X', 1);
-		Business.playerMove('X', 2);
-		assertEquals('X' , Business.gameStatus());
+		business.playerMove('X', 0);
+		business.playerMove('X', 1);
+		business.playerMove('X', 2);
+		assertEquals('X' , business.gameStatus());
 		
 		// O wins
 		business = new Business();
-		Business.playerMove('O', 0);
-		Business.playerMove('O', 1);
-		Business.playerMove('O', 2);
-		assertEquals('O' , Business.gameStatus());
+		business.playerMove('O', 0);
+		business.playerMove('O', 1);
+		business.playerMove('O', 2);
+		assertEquals('O' , business.gameStatus());
 		
 		// Draw
 		business = new Business();
-		Business.playerMove('X', 0);
-		Business.playerMove('O', 1);
-		Business.playerMove('X', 2);
-		Business.playerMove('O', 3);
-		Business.playerMove('X', 4);
-		Business.playerMove('X', 5);
-		Business.playerMove('O', 6);
-		Business.playerMove('X', 7);
-		Business.playerMove('O', 8);
-		assertEquals('D' , Business.gameStatus());
+		business.playerMove('X', 0);
+		business.playerMove('O', 1);
+		business.playerMove('X', 2);
+		business.playerMove('O', 3);
+		business.playerMove('X', 4);
+		business.playerMove('X', 5);
+		business.playerMove('O', 6);
+		business.playerMove('X', 7);
+		business.playerMove('O', 8);
+		assertEquals('D' , business.gameStatus());
 	}
 	
 	@Test public void testIsOccupied() {
 		
 		// Is occupied test
 		business = new Business();
-		Business.playerMove('X', 0);
-		assertEquals(true , Business.isOccupied(0));
-		assertEquals(false , Business.isOccupied(1));
+		business.playerMove('X', 0);
+		assertEquals(true , business.isOccupied(0));
+		assertEquals(false , business.isOccupied(1));
 		
 		// what to put in the first equals true/false/llegalArgumentException.class?
 		try{
-			assertEquals(true , Business.isOccupied(10));
+			assertEquals(true , business.isOccupied(10));
 	    } catch(IllegalArgumentException e){
 	        //ignore, this exception is expected.
 	    	//System.out.println(e.getMessage()); 
 	    }
 		
 		try{
-			assertEquals(IllegalArgumentException.class , Business.isOccupied(-1));
+			assertEquals(IllegalArgumentException.class , business.isOccupied(-1));
 	    } catch(IllegalArgumentException e){
 	        //ignore, this exception is expected.
 	    	//System.out.println(e.getMessage()); 
@@ -138,16 +138,16 @@ public class BusinessTest {
 		
 		// AI move test
 		business = new Business();
-		assertEquals(9 , Business.movesLeft);
+		assertEquals(9 , business.movesLeft);
 		
 		// Player moves as X
-		Business.playerMove('X', 4);
-		Business.swapPlayer();
-		assertEquals(8 , Business.movesLeft);
+		business.playerMove('X', 4);
+		business.swapPlayer();
+		assertEquals(8 , business.movesLeft);
 		
 		// AI as O
-		Business.aIMoveRand();
-		assertEquals(7 , Business.movesLeft);
+		business.aIMoveRand();
+		assertEquals(7 , business.movesLeft);
 		//System.out.println(Business.printBoard()); 
 	}
 	
