@@ -9,13 +9,14 @@ public class ConsoleInterface {
 	public static Business business = new Business();
 	public static char status;
 	public static Scanner scan;
-	//public static  move;
 	
 	public static void printBoard() {
-		//System.out.println(business.printBoard());
-		for(int i = 0; i < 9; i = i +3) {
-			System.out.println(business.board[i] + " | " + business.board[i + 1] + " | " + business.board[i + 2]);
-		}
+		clearScreen();
+		System.out.println(" " + business.board[0] + " | " + business.board[1] + " | " + business.board[2]);
+		System.out.println("-----------");
+		System.out.println(" " + business.board[3] + " | " + business.board[4] + " | " + business.board[5]);
+		System.out.println("-----------");
+		System.out.println(" " + business.board[6] + " | " + business.board[7] + " | " + business.board[8]);
 		
 	}
 	
@@ -30,28 +31,28 @@ public class ConsoleInterface {
 			move = scan.nextInt();	
 			stopper = business.playerMove(player, move);
 			if(stopper == false) System.out.println("Wrong input!");
-		}
-		
-		
-		 
+		}	 
 	}
 	
 	public static void aIMoveRand() {
-		System.out.println("AI moves: ");
+		//System.out.println("AI moves: ");
 		business.swapPlayer();
 		business.aIMoveRand();
 		business.swapPlayer();
 	}
 	
+	public static void clearScreen() {
+		for(int i = 0; i < 20; i++)
+			System.out.println("\n");
+	}
+	
 	public static void main(String[] args) {
-		
-		
-		
+			
 		while(business.gameStatus() == 'N') {
 			playerMove();
 			printBoard();
 			aIMoveRand();
-			printBoard();
+			printBoard();			
 		}
 		
 		if(business.gameStatus() == 'X' || business.gameStatus() == 'O')
